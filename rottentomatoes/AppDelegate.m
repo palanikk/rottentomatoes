@@ -7,11 +7,46 @@
 //
 
 #import "AppDelegate.h"
+#import "MoviesViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+ 
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
+    /*UIColor *blueColor = [UIColor colorWithRed:0.345 green:0.522 blue:0.953 alpha:1];
+
+    [[UINavigationBar appearance] setBarTintColor: blueColor];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];*/
+    
+    
+    MoviesViewController *movieListVC= [[MoviesViewController alloc] init];
+    movieListVC.dataUrl = @"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=3aw6qppb5a4efy3mn9q5twth";
+    
+    
+    UINavigationController *navMovieListVC = [[UINavigationController alloc] initWithRootViewController:movieListVC];
+    navMovieListVC.tabBarItem.title = @"Movies";
+    navMovieListVC.tabBarItem.image =  [UIImage imageNamed:@"movie"];
+
+    
+    
+    MoviesViewController *dvdListVC = [[MoviesViewController alloc] init];
+    dvdListVC.dataUrl = @"http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=3aw6qppb5a4efy3mn9q5twth";
+    UINavigationController *navDvdListVC = [[UINavigationController alloc] initWithRootViewController:dvdListVC];
+    navDvdListVC.tabBarItem.title = @"DVD";
+    navDvdListVC.tabBarItem.image =  [UIImage imageNamed:@"dvd"];
+    
+    
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    NSArray* controllers = [NSArray arrayWithObjects: navMovieListVC, navDvdListVC, nil];
+    tabBarController.viewControllers = controllers;
+    
+    
+    self.window.rootViewController = tabBarController;
+    [self.window makeKeyAndVisible];
+    
     // Override point for customization after application launch.
     return YES;
 }

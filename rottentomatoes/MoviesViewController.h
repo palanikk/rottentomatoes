@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MoviesViewController.h
 //  rottentomatoes
 //
 //  Created by Palanisamy Kozhanthaiappan on 9/12/14.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface MoviesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+
+@property (nonatomic) NSString *dataUrl;
 
 @end
