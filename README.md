@@ -24,3 +24,8 @@ Features
 - [x] For the large poster, load the low-res image first, switch to high-res when complete
 - [x] Add a search bar.
 - [x] Customize the navigation bar.
+
+
+Walkthrough
+------------
+![Video Walkthrough](rottentomatoes.gif)
